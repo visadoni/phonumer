@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Chetnihalli","Name":"BESTA CHINNA RANGAMMA","Designation":"ENA","PhoneNum":8317561807},{"Office":"Chetnihalli","Name":"MEENUGA VARAPRASAD","Designation":"WEA","PhoneNum":9502652055},{"Office":"Chetnihalli","Name":"KURUBA RADHIKA","Designation":"PS VI","PhoneNum":9515084325},{"Office":"Chetnihalli","Name":"MEKALA PRVEENA","Designation":"VILLAGE HOTICULTURE ASSISTANT","PhoneNum":6301895992},{"Office":"Chetnihalli","Name":"TELLAPANDLA NAVEENKUMAR","Designation":"SA","PhoneNum":9581182210},{"Office":"Chetnihalli","Name":"V ARUNA","Designation":"ANM","PhoneNum":7013539813},{"Office":"Chetnihalli","Name":"GUNJAPALLI PADMAVATHI","Designation":"MP","PhoneNum":8367726227},{"Office":"Chetnihalli","Name":"K Hanumanthu","Designation":"Village Volunteer","PhoneNum":7095930731},{"Office":"Chetnihalli","Name":"K Narasimhulu","Designation":"Village Volunteer","PhoneNum":9705207016},{"Office":"Chetnihalli","Name":"B Lalitha","Designation":"Village Volunteer","PhoneNum":9948049977},{"Office":"Chetnihalli","Name":"E Sivashankar","Designation":"Village Volunteer","PhoneNum":9652744625},{"Office":"Chetnihalli","Name":"B Veerabhadra","Designation":"Village Volunteer","PhoneNum":9666684081},{"Office":"Chetnihalli","Name":"U Rajeswari","Designation":"Village Volunteer","PhoneNum":9951000517},{"Office":"Chetnihalli","Name":"N Anjineyulu","Designation":"Village Volunteer","PhoneNum":7780406343},{"Office":"Chetnihalli","Name":"T Praveen Kumar","Designation":"Village Volunteer","PhoneNum":6303373364},{"Office":"Chetnihalli","Name":"H Kavithamma","Designation":"Village Volunteer","PhoneNum":9666465343},{"Office":"Chetnihalli","Name":"B Venkateswaramma","Designation":"Village Volunteer","PhoneNum":6305091035},{"Office":"Chetnihalli","Name":"B Savithri","Designation":"Village Volunteer","PhoneNum":9000748880}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

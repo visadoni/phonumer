@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Hanumapuram","Name":"Maridi Rajasekhar","Designation":"Digital Assistant","PhoneNum":9490994732},{"Office":"Hanumapuram","Name":"Madri Rathnaianh","Designation":"Panchayat Secretary gr-v","PhoneNum":918297635463},{"Office":"Hanumapuram","Name":"THOGATA Sandya","Designation":" Welfare and Education Assistant","PhoneNum":9533191456},{"Office":"Hanumapuram","Name":"Adoni Vamshi Krishna","Designation":"Engineering Assistant","PhoneNum":9581693242},{"Office":"Hanumapuram","Name":"Sayed Nabi Rasool","Designation":"Energy Assistant","PhoneNum":918688253682},{"Office":"Hanumapuram","Name":"MITTE Varalakshmi","Designation":"ANM","PhoneNum":9441207039},{"Office":"Hanumapuram","Name":"M Rahul Kalyan Chakravarthy","Designation":"village agriculture Assistant","PhoneNum":9666646758},{"Office":"Hanumapuram","Name":"Shaik Abdul Khadeer","Designation":"Village Surveyor","PhoneNum":8977308090},{"Office":"Hanumapuram","Name":"Boya Ramana Devi","Designation":"Mahila police","PhoneNum":919154412881},{"Office":"Hanumapuram","Name":"Pujari Malathi","Designation":"Volunteer","PhoneNum":917672009354},{"Office":"Hanumapuram","Name":"Chakkera Ambika","Designation":"Volunteer","PhoneNum":916305167714},{"Office":"Hanumapuram","Name":"Golla Devendra","Designation":"Volunteer","PhoneNum":9542512309},{"Office":"Hanumapuram","Name":"Boya Ramanjineyulu","Designation":"Volunteer","PhoneNum":917036033060},{"Office":"Hanumapuram","Name":"Boya Pendekal Venkateshwarlu","Designation":"Volunteer","PhoneNum":7793999214},{"Office":"Hanumapuram","Name":"Guggillu Ampamma","Designation":"Volunteer","PhoneNum":9676232516},{"Office":"Hanumapuram","Name":"Mokasi Pulikonda","Designation":"Volunteer","PhoneNum":8639844753},{"Office":"Hanumapuram","Name":"Kurmi Ramanjineyulu","Designation":"Volunteer","PhoneNum":919052961143},{"Office":"Hanumapuram","Name":"jillala Bhuvaneswari","Designation":"Volunteer","PhoneNum":9154549966}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

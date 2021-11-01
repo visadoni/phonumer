@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Malapalli","Name":"K PRAMEELA","Designation":"ANM","PhoneNum":9550226320},{"Office":"Malapalli","Name":"M SARALAMMA","Designation":"M P","PhoneNum":6301419957},{"Office":"Malapalli","Name":"G SHIRISHA","Designation":"SA","PhoneNum":9502739150},{"Office":"Malapalli","Name":"S PRAMEELA","Designation":"WEA","PhoneNum":9985024982},{"Office":"Malapalli","Name":"B KISHORE","Designation":"PS VI","PhoneNum":7993446044},{"Office":"Malapalli","Name":"BAITIGERI SRINIVASULU","Designation":"Village Volunteer","PhoneNum":9154546028},{"Office":"Malapalli","Name":"RODDANNAGARI MALLIKARJUNA","Designation":"Village Volunteer","PhoneNum":9154546034},{"Office":"Malapalli","Name":"EDIGA KHASIM","Designation":"Village Volunteer","PhoneNum":9154546032},{"Office":"Malapalli","Name":"BARIKI RAJESWARI","Designation":"Village Volunteer","PhoneNum":9154546030},{"Office":"Malapalli","Name":"CHAKALI MUNISWAMY","Designation":"Village Volunteer","PhoneNum":9154546021},{"Office":"Malapalli","Name":"MULLA SHEKSHAVALI","Designation":"Village Volunteer","PhoneNum":9640667767},{"Office":"Malapalli","Name":"MALE URUKUNDU","Designation":"Village Volunteer","PhoneNum":9154546031},{"Office":"Malapalli","Name":"MADIGA LALITHA","Designation":"Village Volunteer","PhoneNum":9154546018},{"Office":"Malapalli","Name":"AVULA AYYAPPA","Designation":"Village Volunteer","PhoneNum":9154546026},{"Office":"Malapalli","Name":"BOYA ANJALI","Designation":"Village Volunteer","PhoneNum":9652839093},{"Office":"Malapalli","Name":"MADIGA VIJAYARANI","Designation":"Village Volunteer","PhoneNum":9121749342},{"Office":"Malapalli","Name":"TOLAMMAGARI PADMA SREE","Designation":"Village Volunteer","PhoneNum":9154546029},{"Office":"Malapalli","Name":"MEENUGA PEDDA VEERA REDDY","Designation":"Village Volunteer","PhoneNum":9154546017},{"Office":"Malapalli","Name":"KURUVA DEVARA NAGANNA","Designation":"Village Volunteer","PhoneNum":8074361211},{"Office":"Malapalli","Name":"KURUVA BHARATHI","Designation":"Village Volunteer","PhoneNum":9154546025},{"Office":"Malapalli","Name":"S  Shankar Naik","Designation":"Village Volunteer","PhoneNum":8897167218},{"Office":"Malapalli","Name":"S Hanumanthamma","Designation":"Village Volunteer","PhoneNum":9640876227},{"Office":"Malapalli","Name":"S Shantamma","Designation":"Village Volunteer","PhoneNum":9949022424},{"Office":"Malapalli","Name":"M Veeresh","Designation":"Village Volunteer","PhoneNum":9491608126}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

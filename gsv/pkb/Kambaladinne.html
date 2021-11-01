@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Kambaladinne ","Name":"MONE DRAKSHAVENI","Designation":"MAHILA POLICE","PhoneNum":6301572120},{"Office":"Kambaladinne ","Name":"K MAHINDRA","Designation":"PANCHAYAT SECRETARY","PhoneNum":8897870404},{"Office":"Kambaladinne ","Name":"KURUVA PARAMESH","Designation":"WELFARE ASSISTANT","PhoneNum":9676940737},{"Office":"Kambaladinne ","Name":"P RAKSHITHA","Designation":"AGRICULTURE ASSISTANT","PhoneNum":9959398204},{"Office":"Kambaladinne ","Name":"SWAPNA","Designation":"DIGITAL ASSISTANT","PhoneNum":9182006549},{"Office":"Kambaladinne ","Name":"RAVI KUMAR","Designation":"SURVEY ASSISTANT","PhoneNum":8309567549},{"Office":"Kambaladinne ","Name":"TEJASWINI","Designation":"ENGINEERING ASSISTANT","PhoneNum":8309307956},{"Office":"Kambaladinne ","Name":"M SHANTHIRAJU","Designation":"VOLUNTEER","PhoneNum":9154550065},{"Office":"Kambaladinne ","Name":"IMAVATHI","Designation":"VOLUNTEER","PhoneNum":9154550076},{"Office":"Kambaladinne ","Name":"D SHADHIKA","Designation":"VOLUNTEER","PhoneNum":9154550075},{"Office":"Kambaladinne ","Name":"T LAXMIKANTH REDDY","Designation":"VOLUNTEER","PhoneNum":9154550074},{"Office":"Kambaladinne ","Name":"K M BHEERAPPA","Designation":"VOLUNTEER","PhoneNum":9154550070},{"Office":"Kambaladinne ","Name":"D LAXMIDEVI","Designation":"VOLUNTEER","PhoneNum":9154550064},{"Office":"Kambaladinne ","Name":"K MEENAKSHAMMA","Designation":"VOLUNTEER","PhoneNum":9154550068},{"Office":"Kambaladinne ","Name":"K VEERANARAYANAPPA","Designation":"VOLUNTEER","PhoneNum":9154550073},{"Office":"Kambaladinne ","Name":"B VEERESH","Designation":"VOLUNTEER","PhoneNum":9154550067},{"Office":"Kambaladinne ","Name":"K CHITTEMMA","Designation":"VOLUNTEER","PhoneNum":9154550072},{"Office":"Kambaladinne ","Name":"C ANASUYA","Designation":"VOLUNTEER","PhoneNum":9154550071},{"Office":"Kambaladinne ","Name":"C LINGAMMA","Designation":"VOLUNTEER","PhoneNum":9154550063},{"Office":"Kambaladinne ","Name":"V GAYATHRI","Designation":"VOLUNTEER","PhoneNum":9154550062},{"Office":"Kambaladinne ","Name":"B KASIMAPPA","Designation":"VOLUNTEER","PhoneNum":9154550061},{"Office":"Kambaladinne ","Name":"N JAYALAKSHMI","Designation":"VOLUNTEER","PhoneNum":8297827527},{"Office":"Kambaladinne ","Name":"BOYA RAMAIAH ","Designation":"VOLUNTEER","PhoneNum":7013223753},{"Office":"Kambaladinne ","Name":"B BHEMANNA","Designation":"VOLUNTEER","PhoneNum":9154550059},{"Office":"Kambaladinne ","Name":"B G VEERESH","Designation":"VOLUNTEER","PhoneNum":9440244913}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

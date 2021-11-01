@@ -1,0 +1,115 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Mantralyam Mandal APMO </span>
+          <button class="btn" onclick="location.href='https://pardhutest16359.co.in/index.html'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select APMO Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Podalakunta ","Name":"M.Vinod Kumar","Designation":"VAA","PhoneNum":8074212281},{"Office":"Podalakunta ","Name":"B AYYAPPA","Designation":"VRO","PhoneNum":6362621225},{"Office":"Podalakunta ","Name":"P PAVAN KUMAR","Designation":"VAA","PhoneNum":8247740020},{"Office":"Podalakunta ","Name":"K Shankaranna","Designation":"Village Volunteer","PhoneNum":9014718364},{"Office":"Podalakunta ","Name":"M.Siddesh","Designation":"Village Volunteer","PhoneNum":8498807619},{"Office":"Podalakunta ","Name":"B.Varalakshmi","Designation":"Village Volunteer","PhoneNum":7893022469},{"Office":"Podalakunta ","Name":"K.Yankappa","Designation":"Village Volunteer","PhoneNum":9347448806},{"Office":"Podalakunta ","Name":"D.Padma","Designation":"Village Volunteer","PhoneNum":6300233470},{"Office":"Podalakunta ","Name":"Pavan Kumar","Designation":"Village Volunteer","PhoneNum":6281839198},{"Office":"Podalakunta ","Name":"K.Venkateswarlu","Designation":"Village Volunteer","PhoneNum":9502851499},{"Office":"Podalakunta ","Name":"M.Veeresh","Designation":"Village Volunteer","PhoneNum":9441811301},{"Office":"Podalakunta ","Name":"M.Prabakaraiah","Designation":"Village Volunteer","PhoneNum":9963602713},{"Office":"Podalakunta ","Name":"Y.ramanjineyulu","Designation":"Village Volunteer","PhoneNum":9676035912}];
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

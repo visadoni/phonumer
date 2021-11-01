@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Tarapuram ","Name":"Guru raja swami","Designation":"Vro","PhoneNum":97003707302},{"Office":"Tarapuram ","Name":"Y madhu babu","Designation":"Panchayat secretary ","PhoneNum":9160929067},{"Office":"Tarapuram ","Name":"K Saraswati","Designation":"Mahila Police","PhoneNum":7013378531},{"Office":"Tarapuram ","Name":"C.Thikkanna","Designation":"WEA","PhoneNum":9676783365},{"Office":"Tarapuram ","Name":"Shaik jabivulla","Designation":"Agriculture \/Horticulture MpEO's","PhoneNum":9849482204},{"Office":"Tarapuram ","Name":"Meeniga  Raju","Designation":"Survey Assistant","PhoneNum":9542254927},{"Office":"Tarapuram ","Name":"D. Manjula","Designation":"DA","PhoneNum":7793920966},{"Office":"Tarapuram ","Name":"uma Maheswari ","Designation":"Veterinary \/fisheries assistant","PhoneNum":9392648964},{"Office":"Tarapuram ","Name":"Buruju Ramanji","Designation":"volunteer","PhoneNum":9948827351},{"Office":"Tarapuram ","Name":"Madri Sumalatha","Designation":"volunteer","PhoneNum":9963572257},{"Office":"Tarapuram ","Name":"Naveen Hariana","Designation":"volunteer","PhoneNum":9000462501},{"Office":"Tarapuram ","Name":"Jammu Ramudu","Designation":"volunteer","PhoneNum":9182196127},{"Office":"Tarapuram ","Name":"Jammu Anjineyulu","Designation":"volunteer","PhoneNum":9010170759},{"Office":"Tarapuram ","Name":"Yelakanti Laxmi","Designation":"volunteer","PhoneNum":8106643027},{"Office":"Tarapuram ","Name":"Eranna Boya","Designation":"volunteer","PhoneNum":9000462502},{"Office":"Tarapuram ","Name":"Kaderekota Anandamma","Designation":"volunteer","PhoneNum":9951946337},{"Office":"Tarapuram ","Name":"SwJjanam Someswaramma","Designation":"volunteer","PhoneNum":9502054556},{"Office":"Tarapuram ","Name":"Goulla\nHanumantha Raddy","Designation":"volunteer","PhoneNum":9390085637},{"Office":"Tarapuram ","Name":"Boya Revathi","Designation":"volunteer","PhoneNum":9959036298},{"Office":"Tarapuram ","Name":"Gooni Ramanjineyulu","Designation":"volunteer","PhoneNum":9100457164},{"Office":"Tarapuram ","Name":"Lokeswari Boya","Designation":"volunteer","PhoneNum":6303517088}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

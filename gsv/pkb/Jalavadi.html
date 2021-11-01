@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Jalavadi","Name":"SARASWATI","Designation":"MAHILA POLICE","PhoneNum":7989008912},{"Office":"Jalavadi","Name":"J SRINIVASULU","Designation":"PANCHAYAT SECRETARY","PhoneNum":9642830060},{"Office":"Jalavadi","Name":"Prakash Reddy","Designation":"WELFARE ASSISTANT","PhoneNum":9542339530},{"Office":"Jalavadi","Name":"maddiletiswamy","Designation":"AGRICULTURE ASSISTANT","PhoneNum":7989824117},{"Office":"Jalavadi","Name":"jelly urukundu","Designation":"DIGITAL ASSISTANT","PhoneNum":7396538010},{"Office":"Jalavadi","Name":"MAHESH","Designation":"SURVEY ASSISTANT","PhoneNum":9573946570},{"Office":"Jalavadi","Name":"Madhavi Latha","Designation":"ENGINEERING ASSISTANT","PhoneNum":9110751324},{"Office":"Jalavadi","Name":"Sudhakar","Designation":"VOLUNTEER","PhoneNum":9441622531},{"Office":"Jalavadi","Name":"raju","Designation":"VOLUNTEER","PhoneNum":9160564778},{"Office":"Jalavadi","Name":"Anita","Designation":"VOLUNTEER","PhoneNum":8790130775},{"Office":"Jalavadi","Name":"rangamma","Designation":"VOLUNTEER","PhoneNum":8142230781},{"Office":"Jalavadi","Name":"Sujatha","Designation":"VOLUNTEER","PhoneNum":9346839938},{"Office":"Jalavadi","Name":"NAGAVENI","Designation":"VOLUNTEER","PhoneNum":9014644289},{"Office":"Jalavadi","Name":"LAKSHMANNA","Designation":"VOLUNTEER","PhoneNum":6302917496},{"Office":"Jalavadi","Name":"mahankalamma","Designation":"VOLUNTEER","PhoneNum":9666771256},{"Office":"Jalavadi","Name":"brahmayya","Designation":"VOLUNTEER","PhoneNum":6281714821},{"Office":"Jalavadi","Name":"shaik hussein peera","Designation":"VOLUNTEER","PhoneNum":8688842974}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

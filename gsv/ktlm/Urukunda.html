@@ -1,0 +1,115 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Mantralyam Mandal APMO </span>
+          <button class="btn" onclick="location.href='https://pardhutest16359.co.in/index.html'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select APMO Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":" Urukunda","Name":"K.Divya Jyothi","Designation":"WEA","PhoneNum":9390948738},{"Office":" Urukunda","Name":"P M SARASWATHI","Designation":"VAS","PhoneNum":7075103984},{"Office":" Urukunda","Name":"M.Nalini","Designation":"EA","PhoneNum":9052387587},{"Office":" Urukunda","Name":"A.Raju","Designation":"VAA","PhoneNum":9573289228},{"Office":"Urukunda","Name":"B.Venkatesh","Designation":"Village Volunteer","PhoneNum":7997165957},{"Office":"Urukunda","Name":"Begari Veeresh","Designation":"Village Volunteer","PhoneNum":9177944983},{"Office":"Urukunda","Name":"Boya Veeresh","Designation":"Village Volunteer","PhoneNum":966677960},{"Office":"Urukunda","Name":"C.Nagendra","Designation":"Village Volunteer","PhoneNum":9848536727},{"Office":"Urukunda","Name":"C.Veeresh","Designation":"Village Volunteer","PhoneNum":9441602695},{"Office":"Urukunda","Name":"G.Battanna","Designation":"Village Volunteer","PhoneNum":7981582778},{"Office":"Urukunda","Name":"G.Jaya Sree","Designation":"Village Volunteer","PhoneNum":9154544524},{"Office":"Urukunda","Name":"K.Ambamma","Designation":"Village Volunteer","PhoneNum":8897686330},{"Office":"Urukunda","Name":"K.Basalingappa","Designation":"Village Volunteer","PhoneNum":7660040015},{"Office":"Urukunda","Name":"K.Gangadhar","Designation":"Village Volunteer","PhoneNum":9154544512},{"Office":"Urukunda","Name":"K.Jyothi","Designation":"Village Volunteer","PhoneNum":7975012181},{"Office":"Urukunda","Name":"K.Pakkiraiah","Designation":"Village Volunteer","PhoneNum":9154544526},{"Office":"Urukunda","Name":"K.Rajasekhar","Designation":"Village Volunteer","PhoneNum":9381486038},{"Office":"Urukunda","Name":"K.Sandya","Designation":"Village Volunteer","PhoneNum":9848536727},{"Office":"Urukunda","Name":"K.Uvarani","Designation":"Village Volunteer","PhoneNum":8074104645},{"Office":"Urukunda","Name":"K.Veeresh","Designation":"Village Volunteer","PhoneNum":7013741324},{"Office":"Urukunda","Name":"K.Venkatesh","Designation":"Village Volunteer","PhoneNum":915454496},{"Office":"Urukunda","Name":"K.Vijaya","Designation":"Village Volunteer","PhoneNum":9154544497},{"Office":"Urukunda","Name":"M.Eranna","Designation":"Village Volunteer","PhoneNum":9154544507},{"Office":"Urukunda","Name":"M.Ramesh","Designation":"Village Volunteer","PhoneNum":9154544530},{"Office":"Urukunda","Name":"N.Anjinamma","Designation":"Village Volunteer","PhoneNum":6300744199},{"Office":"Urukunda","Name":"N.Ramesh","Designation":"Village Volunteer","PhoneNum":9154544506},{"Office":"Urukunda","Name":"N.Satyamma","Designation":"Village Volunteer","PhoneNum":8074207488},{"Office":"Urukunda","Name":"P.Yasoda","Designation":"Village Volunteer","PhoneNum":9154544518},{"Office":"Urukunda","Name":"T.Ramanna","Designation":"Village Volunteer","PhoneNum":9154544538},{"Office":"Urukunda","Name":"Y.Siddappa","Designation":"Village Volunteer","PhoneNum":9618491212},{"Office":"Urukunda","Name":"D.Nagreddy","Designation":"Village Volunteer","PhoneNum":9666392258},{"Office":"Urukunda","Name":"Uligaiah","Designation":"Village Volunteer","PhoneNum":9110461581},{"Office":"Urukunda","Name":"D.Basappa","Designation":"Village Volunteer","PhoneNum":7702035942}];
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

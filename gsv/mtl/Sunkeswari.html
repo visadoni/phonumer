@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Sunkeswari","Name":"R THIMMESJ","Designation":"SA","PhoneNum":8500048060},{"Office":"Sunkeswari","Name":"SHAIK SHAHANAZ","Designation":"WEA","PhoneNum":8639074246},{"Office":"Sunkeswari","Name":"B LALITHA","Designation":"VAA","PhoneNum":9948197726},{"Office":"Sunkeswari","Name":"KURUVA RAGHAVENDRA","Designation":"AHA","PhoneNum":6305661213},{"Office":"Sunkeswari","Name":"GADDAM KEERTHI","Designation":"PS VI","PhoneNum":9154537203},{"Office":"Sunkeswari","Name":"M RATNAMMA","Designation":"MP","PhoneNum":7337705924},{"Office":"Sunkeswari","Name":"Kuruva Veeresh","Designation":"Village Volunteer","PhoneNum":91545463018},{"Office":"Sunkeswari","Name":"Abbili Bheerappa","Designation":"Village Volunteer","PhoneNum":6301526689},{"Office":"Sunkeswari","Name":"M Raju","Designation":"Village Volunteer","PhoneNum":6302059097},{"Office":"Sunkeswari","Name":"Kuruva Veeranagappa","Designation":"Village Volunteer","PhoneNum":9515655922},{"Office":"Sunkeswari","Name":"Hanumanthu","Designation":"Village Volunteer","PhoneNum":9676081200},{"Office":"Sunkeswari","Name":"Ramanjineyulu Boya","Designation":"Village Volunteer","PhoneNum":9573773994},{"Office":"Sunkeswari","Name":"Jangam Raju","Designation":"Village Volunteer","PhoneNum":9110520668},{"Office":"Sunkeswari","Name":"Kuruva Ragappa","Designation":"Village Volunteer","PhoneNum":9966182529},{"Office":"Sunkeswari","Name":"Bayatinti Veeresh","Designation":"Village Volunteer","PhoneNum":9381094889},{"Office":"Sunkeswari","Name":"Rajaka Veeresh","Designation":"Village Volunteer","PhoneNum":9177332591},{"Office":"Sunkeswari","Name":"Kuruva Chinna eranna","Designation":"Village Volunteer","PhoneNum":7386920771}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

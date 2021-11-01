@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Kachapuram_2","Name":"G Sandhya","Designation":"Panchayat Secretary","PhoneNum":8639559873},{"Office":"Kachapuram_2","Name":"G Hepsiba","Designation":"VRO","PhoneNum":8978973974},{"Office":"Kachapuram_2","Name":"M Suvartha","Designation":"Mahila Police","PhoneNum":7989761489},{"Office":"Kachapuram_2","Name":"P Bhavani","Designation":"ENA","PhoneNum":9182255011},{"Office":"Kachapuram_2","Name":"P Shekar","Designation":"VAA","PhoneNum":8309406895},{"Office":"Kachapuram_2","Name":"N Nagalalitha","Designation":"WEA","PhoneNum":9392185935},{"Office":"Kachapuram_2","Name":"A Susmitha","Designation":"PS VI","PhoneNum":7674077558},{"Office":"Kachapuram_2","Name":"J Nagaveenadharani","Designation":"SA","PhoneNum":9985215013},{"Office":"Kachapuram_2","Name":"Abhilash Reddy","Designation":"Village Volunteer","PhoneNum":7660895539},{"Office":"Kachapuram_2","Name":"Boya Pedda Narasimhulu","Designation":"Village Volunteer","PhoneNum":8309944215},{"Office":"Kachapuram_2","Name":"Boya Sudha","Designation":"Village Volunteer","PhoneNum":8317694087},{"Office":"Kachapuram_2","Name":"Madiga Raju","Designation":"Village Volunteer","PhoneNum":9666943461},{"Office":"Kachapuram_2","Name":"Chakali chinna Eranna","Designation":"Village Volunteer","PhoneNum":9491539644},{"Office":"Kachapuram_2","Name":"Boya Balu","Designation":"Village Volunteer","PhoneNum":9182257126}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

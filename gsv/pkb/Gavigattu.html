@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Gavigattu","Name":"N PUNITH","Designation":"VILLAGE AGRICULTURE ASST","PhoneNum":9490508288},{"Office":"Gavigattu","Name":"D RESHMA","Designation":"Mahila Police","PhoneNum":7095767480},{"Office":"Gavigattu","Name":"P VENUGOPAL","Designation":"WELFARE AND EDUCATION ASST","PhoneNum":7207257685},{"Office":"Gavigattu","Name":"S BALANNA","Designation":"VILLAGE SURVEYOR","PhoneNum":9052537294},{"Office":"Gavigattu","Name":"D DURGANNA ","Designation":"Line Man","PhoneNum":7288006097},{"Office":"Gavigattu","Name":"B LAKSHMAN NAIK","Designation":"ENGINEERING ASST","PhoneNum":9110316783},{"Office":"Gavigattu","Name":"U ANUSHA","Designation":"DIGITAL  ASST","PhoneNum":8639436151},{"Office":"Gavigattu","Name":"K NAVEEN KUMAR","Designation":"ANIMAL HUSBANDARY ASST","PhoneNum":9346191963},{"Office":"Gavigattu","Name":"V GOPAL","Designation":"VOLUNTEER ","PhoneNum":9398427441},{"Office":"Gavigattu","Name":"G RAMANJANEYULU ","Designation":"VOLUNTEER ","PhoneNum":8897964890},{"Office":"Gavigattu","Name":"K NARASAIAH","Designation":"VOLUNTEER ","PhoneNum":9949102566},{"Office":"Gavigattu","Name":"N NARASAIAH","Designation":"VOLUNTEER ","PhoneNum":8074291655},{"Office":"Gavigattu","Name":"G OMKAR","Designation":"VOLUNTEER ","PhoneNum":8340800418},{"Office":"Gavigattu","Name":"ERANNA","Designation":"VOLUNTEER ","PhoneNum":9676321072},{"Office":"Gavigattu","Name":"G NAGARAJU","Designation":"VOLUNTEER ","PhoneNum":9000327234},{"Office":"Gavigattu","Name":"N GOVIMDAMMA","Designation":"VOLUNTEER ","PhoneNum":6305340382}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

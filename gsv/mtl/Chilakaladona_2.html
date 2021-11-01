@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Chilakaladona_2","Name":"KURUVA GANESH KUMAR","Designation":"PS V","PhoneNum":9885951574},{"Office":"Chilakaladona_2","Name":"KAMARTHI RADHA","Designation":"PS VI","PhoneNum":6281464317},{"Office":"Chilakaladona_2","Name":"MALLEPOGU BLANDEENA","Designation":"VRO","PhoneNum":6305870771},{"Office":"Chilakaladona_2","Name":"VADDE VENKATESHU","Designation":"WEA","PhoneNum":9849384982},{"Office":"Chilakaladona_2","Name":"BISINIGI HUSSENI","Designation":"ENA","PhoneNum":9848098828},{"Office":"Chilakaladona_2","Name":"JAMBU GOURAMMA","Designation":"ANM","PhoneNum":7386460756},{"Office":"Chilakaladona_2","Name":"SHAIK RESHMA","Designation":"M P","PhoneNum":8367327758},{"Office":"Chilakaladona_2","Name":"DUDEKULA BHAVITHA","Designation":"SA","PhoneNum":9381656744},{"Office":"Chilakaladona_2","Name":"GOLLA LAKSHMIREDDY","Designation":"VAA","PhoneNum":9951861626},{"Office":"Chilakaladona_2","Name":"MANIKYAM PRADEEP KUMAR","Designation":"EA","PhoneNum":8297531358},{"Office":"Chilakaladona_2","Name":"BEESUPALLI MEENA","Designation":"Village Volunteer","PhoneNum":9346449315},{"Office":"Chilakaladona_2","Name":"JAKKALA MALLESWARI","Designation":"Village Volunteer","PhoneNum":6281314157},{"Office":"Chilakaladona_2","Name":"MANIKYAM VINOD","Designation":"Village Volunteer","PhoneNum":7981129240},{"Office":"Chilakaladona_2","Name":"CHADUVULA VENKATESU","Designation":"Village Volunteer","PhoneNum":9390552127},{"Office":"Chilakaladona_2","Name":"KURUVA BHASKAR","Designation":"Village Volunteer","PhoneNum":9133627713},{"Office":"Chilakaladona_2","Name":"BOYA VENKATESHULU","Designation":"Village Volunteer","PhoneNum":8247741257},{"Office":"Chilakaladona_2","Name":"CHADUVUKONDA MALLIKARJUNA","Designation":"Village Volunteer","PhoneNum":9398566320}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

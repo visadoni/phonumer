@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"H.Muravani - 1","Name":"B Md Shaheed","Designation":"Panchayath Secretary  GR-III","PhoneNum":9533221372},{"Office":"H.Muravani - 1","Name":"B Venkateswara naik","Designation":"Village Horticulture Asst.","PhoneNum":8919029764},{"Office":"H.Muravani - 1","Name":"Garji sukanya","Designation":"ANM","PhoneNum":7995133283},{"Office":"H.Muravani - 1","Name":"jagathappagari raju","Designation":"Eng.Asst","PhoneNum":9849925938},{"Office":"H.Muravani - 1","Name":"A Nanditha renu","Designation":"Digital Asst.","PhoneNum":9701659191},{"Office":"H.Muravani - 1","Name":"K Sreekar","Designation":"Welfare Asst.","PhoneNum":9014666641},{"Office":"H.Muravani - 1","Name":"B Lakshmi","Designation":"V.R.O","PhoneNum":9652972526},{"Office":"H.Muravani - 1","Name":"M Sudheer kumar","Designation":"Village surveyor","PhoneNum":9160025343},{"Office":"H.Muravani - 1","Name":"G Nagalakshmamma","Designation":"Mahila Police","PhoneNum":8639824088},{"Office":"H.Muravani - 1","Name":"VIJAY","Designation":"Volunteer","PhoneNum":8886723805},{"Office":"H.Muravani - 1","Name":"VEERANJINEYULU CHILAKA","Designation":"Volunteer","PhoneNum":9885733506},{"Office":"H.Muravani - 1","Name":"ASHA MULLA","Designation":"Volunteer","PhoneNum":9154549976},{"Office":"H.Muravani - 1","Name":"RAGHU VADDE","Designation":"Volunteer","PhoneNum":7013733851},{"Office":"H.Muravani - 1","Name":"LAKSHMI B","Designation":"Volunteer","PhoneNum":7702413148},{"Office":"H.Muravani - 1","Name":"MAHABOOB BASHA KATTUBADI","Designation":"Volunteer","PhoneNum":9618940067},{"Office":"H.Muravani - 1","Name":"SARADA DANDALA","Designation":"Volunteer","PhoneNum":7995531082},{"Office":"H.Muravani - 1","Name":"BHASKAR MALA","Designation":"Volunteer","PhoneNum":7799151944},{"Office":"H.Muravani - 1","Name":"NARASAPPA ABBILI","Designation":"Volunteer","PhoneNum":7729954415},{"Office":"H.Muravani - 1","Name":"VEERESH KURUVA","Designation":"Volunteer","PhoneNum":9676440486},{"Office":"H.Muravani - 1","Name":"VIJAYALAKSHMI LINGA BALIJA PALLE","Designation":"Volunteer","PhoneNum":9347867534}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

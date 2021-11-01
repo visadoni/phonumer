@@ -1,0 +1,11 @@
+{
+  "name": "phonumer",
+  "version": "1.0.0",
+  "description": "App to get the phone numbers",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DSPR",
+  "license": "ISC"
+}

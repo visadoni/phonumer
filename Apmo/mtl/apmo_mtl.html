@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Mantralyam Mandal APMO page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  
+<style>
+  *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+background-color:white;
+border:black;
+  border-style:groove;
+color: black;
+padding: 12px 16px;
+font-size: 16px;
+cursor: pointer;
+float: right;
+}
+</style>
+
+</head>
+<body style="text-align:center;" id="body">
+
+  <div class="w3-container w3-teal" >
+    <div class="w3-bar">
+        <span style='font-size:25px;' > Mantralyam Mandal APMO </span>
+        <button class="btn" onclick="location.href='https://pardhutest16359.co.in/index.html'"><i class="fa fa-home"></i></button>
+       </div>
+    </div>
+<div class="w3-container ">
+
+  <p>Select APMO Contacts from Below list</p>
+
+<div class="w3-container">
+
+  <table id="table" class="w3-table-all">
+  <thead><tr class="w3-red"></tr>
+  </thead>
+  </table>
+</div>
+
+  <script>
+    let list = [{"Office":"MANTRALAYAM","Name":"G JAYASREE","Designation":"ASSISTANT PROJECT MANAGER (APM)","PhoneNum":9177101429},{"Office":"MANTRALAYAM","Name":"M RAJANNA","Designation":"COMMUNITY CO ORDINATOR(CC)","PhoneNum":9618901661},{"Office":"MANTRALAYAM","Name":"H JAYANNA","Designation":"COMMUNITY CO ORDINATOR(CC)","PhoneNum":9618901621},{"Office":"MANTRALAYAM","Name":"U RAMALINGA","Designation":"COMMUNITY CO ORDINATOR(CC)","PhoneNum":9618966899},{"Office":"MANTRALAYAM","Name":"C RAMASUBBAIAH","Designation":"COMMUNITY CO ORDINATOR(CC)","PhoneNum":9618966411},{"Office":"MANTRALAYAM","Name":"B BASANNA","Designation":"COMMUNITY CO ORDINATOR(CC)","PhoneNum":9618901505},{"Office":"MANTRALAYAM","Name":"C SIVA SAGAR","Designation":"MANDAL SAMAKYA ACCOUNTANT(MSA)","PhoneNum":9703535245},{"Office":"BASAPURAM","Name":"NAGARAJU","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9110301151},{"Office":"BUDUR","Name":"MANOHAR","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6305710622},{"Office":"BUDUR","Name":"KALYAN","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8247839975},{"Office":"CHENEHALLI","Name":"CHANDHRAIAH","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8317582488},{"Office":"CHENEHALLI","Name":"SANTHOSHAMMA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9346579774},{"Office":"CHILAKALDONA","Name":"DASHAGIRI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6309940290},{"Office":"CHILAKALDONA","Name":"RAMA DEVI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6281101942},{"Office":"DIBBANADODDI","Name":"DEVANNA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8186974423},{"Office":"KACHAPURAM","Name":"JYOTHI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6301339237},{"Office":"KACHAPURAM","Name":"UMA MAHESWARI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9701045744},{"Office":"KAGGALLU","Name":"MANGAMMA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7780734499},{"Office":"KALLUDEVAKUNTA","Name":"RANGANATH","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7569910997},{"Office":"M THANDA","Name":"SIVAJI NAIK","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8074477284},{"Office":"MADHAVARAM","Name":"ESWAR","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8688415917},{"Office":"MADHAVARAM","Name":"NAGAMMA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9182818535},{"Office":"MALAPALLI","Name":"NARASAPPA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9110363821},{"Office":"MALAPALLI","Name":"RUBIKA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9666213311},{"Office":"MALAPALLI","Name":"PAMPAMMA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6300224307},{"Office":"MANTRALAYAM ","Name":"NAGA RATHNA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8179052441},{"Office":"MANTRALAYAM ","Name":"PUSHPA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7842269571},{"Office":"MANTRALAYAM ","Name":"VARA LAXIMI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9885714258},{"Office":"MANTRALAYAM ","Name":"VEERESH","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9160301750},{"Office":"MANTRALAYAM ","Name":"THIMMAPPA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9703314327},{"Office":"NARAYANAPURAM ","Name":"SWAMY DASU","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9542414623},{"Office":"P THANDA","Name":"HANUMANTHU NAIK","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9618181689},{"Office":"RACHUMARRI","Name":"PADMAVATHI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7780655947},{"Office":"RACHUMARRI","Name":"ANJALI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7032101907},{"Office":"RAMPURAM","Name":"RAJASEKHAR","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7019651453},{"Office":"RAMPURAM","Name":"SUDHA RANI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8886545440},{"Office":"SINGARAJINAHALLI","Name":"LINGA REDDY","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8247475798},{"Office":"SOWLAHALLI","Name":"BHEEMESH","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6281486878},{"Office":"SUGUR","Name":"KHADAR BASHA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":9553815433},{"Office":"SUGUR","Name":"UMA MAHESWARI","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7569120853},{"Office":"SUNKESWARI","Name":"HARI KRISHNA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":6300287778},{"Office":"V THIMMAPURAM","Name":"NARASAPPA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7780206531},{"Office":"VAGARUR","Name":"RAMESH","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":7731066259},{"Office":"VAGARUR","Name":"MAHABOOB BASHA","Designation":"VILLAGE ORGANISATION ASSISTANT(VOA)","PhoneNum":8142169635}];
+
+    function constructTable(selector) {
+
+      // Getting the all column names
+      let cols = Headers(list, selector);
+      
+      // Traversing the JSON data
+      for (let i = 0; i < list.length; i++) {
+        let row = $('<tr/>');
+        for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+          let val = list[i][cols[colIndex]];
+          debugger;
+
+          // If there is any key, which is matching
+          // with the column name
+          if (val == null) val = "";
+          row.append($('<td/>').html(val));
+        }
+
+        // Adding each row to the table
+        $(selector).append(row);
+      }
+    }
+    
+    function Headers(list, selector) {
+      let columns = [];
+      let header = $('<tr/>');
+
+      for (let i = 0; i < list.length; i++) {
+        let row = list[i];
+
+        for (let k in row) {
+          if ($.inArray(k, columns) == -1) {
+            columns.push(k);
+
+            // Creating the header
+            header.append($('<th/>').html(k));
+          }
+        }
+      }
+
+      // Appending the header to the table
+      $(selector).append(header);
+      return columns;
+    }
+    $(document).ready(constructTable('#table'))
+
+  var tdEle = document.getElementsByTagName('td');
+  var indexvar = 3;
+  while(indexvar < tdEle.length ){
+    document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+    indexvar+=4;
+
+  }
+
+  
+
+  </script>
+
+</body>
+
+</html>

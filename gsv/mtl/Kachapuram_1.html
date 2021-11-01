@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Kachapuram_1","Name":"K Dinesh kumar","Designation":"VAA","PhoneNum":8367288882},{"Office":"Kachapuram_1","Name":"D Padma","Designation":"ENA","PhoneNum":9440303474},{"Office":"Kachapuram_1","Name":"C Gayathri","Designation":"Village Surveyor","PhoneNum":9550200641},{"Office":"Kachapuram_1","Name":"M Meenakshamma","Designation":"WEA","PhoneNum":9908369127},{"Office":"Kachapuram_1","Name":"M Nirmala","Designation":"Mahila Police","PhoneNum":7893631240},{"Office":"Kachapuram_1","Name":"T Pushpalatha","Designation":"VRO","PhoneNum":8106996526},{"Office":"Kachapuram_1","Name":"M Hussain Bee","Designation":"Fisseries Asst","PhoneNum":6306463168},{"Office":"Kachapuram_1","Name":"M Anantha Lakshmi","Designation":"Digital Assistant","PhoneNum":9030394618},{"Office":"Kachapuram_1","Name":"KAKI URUKUNDHU","Designation":"Village Volunteer","PhoneNum":9182015108},{"Office":"Kachapuram_1","Name":"MUSENI","Designation":"Village Volunteer","PhoneNum":8500783755},{"Office":"Kachapuram_1","Name":"K ULLIAGAH","Designation":"Village Volunteer","PhoneNum":8886022705},{"Office":"Kachapuram_1","Name":"K MADHEVI","Designation":"Village Volunteer","PhoneNum":7799151143},{"Office":"Kachapuram_1","Name":"K RANGA SWAMY","Designation":"Village Volunteer","PhoneNum":9381469293},{"Office":"Kachapuram_1","Name":"K ANITHA","Designation":"Village Volunteer","PhoneNum":6302351800},{"Office":"Kachapuram_1","Name":"T MAMATHA","Designation":"Village Volunteer","PhoneNum":9705126823},{"Office":"Kachapuram_1","Name":"S RESHMA","Designation":"Village Volunteer","PhoneNum":97053567960},{"Office":"Kachapuram_1","Name":"K JANARDHAN","Designation":"Village Volunteer","PhoneNum":9398261538},{"Office":"Kachapuram_1","Name":"G SHSAHIKALA","Designation":"Village Volunteer","PhoneNum":8074148740},{"Office":"Kachapuram_1","Name":"B SHIVAKUMAR","Designation":"Village Volunteer","PhoneNum":8142336455},{"Office":"Kachapuram_1","Name":"BVEERESH","Designation":"Village Volunteer","PhoneNum":8639340285},{"Office":"Kachapuram_1","Name":"H RAMAPPA","Designation":"Village Volunteer","PhoneNum":7013754268},{"Office":"Kachapuram_1","Name":"K HANUMANTHU","Designation":"Village Volunteer","PhoneNum":9553053424},{"Office":"Kachapuram_1","Name":"K NARASHIMA","Designation":"Village Volunteer","PhoneNum":9703773023},{"Office":"Kachapuram_1","Name":"K NAGI REDDY","Designation":"Village Volunteer","PhoneNum":6303091835},{"Office":"Kachapuram_1","Name":"S ALTHAF","Designation":"Village Volunteer","PhoneNum":8919828583},{"Office":"Kachapuram_1","Name":"S SOWMAYEE","Designation":"Village Volunteer","PhoneNum":9666880448},{"Office":"Kachapuram_1","Name":"K NAGESH","Designation":"Village Volunteer","PhoneNum":8186076582},{"Office":"Kachapuram_1","Name":"B ROJA","Designation":"Village Volunteer","PhoneNum":9550695917}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

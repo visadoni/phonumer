@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Budur","Name":"T SRAVANI","Designation":"WEA","PhoneNum":8886207311},{"Office":"Budur","Name":"C MADHAN SUBASH","Designation":"VAA","PhoneNum":9133082551},{"Office":"Budur","Name":"M LEELA RANI","Designation":"PS VI","PhoneNum":9912908904},{"Office":"Budur","Name":"R SWATHI","Designation":"ANM","PhoneNum":8978121501},{"Office":"Budur","Name":"K BEERAPPA","Designation":"VS","PhoneNum":9010763496},{"Office":"Budur","Name":"B SUJATHAMMA","Designation":"M P","PhoneNum":7416319431},{"Office":"Budur","Name":"VEERESH","Designation":"EA","PhoneNum":9885435495},{"Office":"Budur","Name":"C MANJULATHA  ","Designation":"Village Volunteer","PhoneNum":8886207311},{"Office":"Budur","Name":"R LAKSHMANNA","Designation":"Village Volunteer","PhoneNum":9154545830},{"Office":"Budur","Name":"K LAKSHMANNA","Designation":"Village Volunteer","PhoneNum":9505134626},{"Office":"Budur","Name":"H RAJU","Designation":"Village Volunteer","PhoneNum":7799543692},{"Office":"Budur","Name":"PG MAHESWARA REDDY","Designation":"Village Volunteer","PhoneNum":9391247983},{"Office":"Budur","Name":"R NAGAIAH","Designation":"Village Volunteer","PhoneNum":8074375260},{"Office":"Budur","Name":"P HANUMANTHU REDDY","Designation":"Village Volunteer","PhoneNum":8096618012},{"Office":"Budur","Name":"PG VIKRAM REDDY","Designation":"Village Volunteer","PhoneNum":6303264054},{"Office":"Budur","Name":"M BUJJAMMA","Designation":"Village Volunteer","PhoneNum":9398851422},{"Office":"Budur","Name":"A SUDHA RANI","Designation":"Village Volunteer","PhoneNum":8501992774},{"Office":"Budur","Name":"B SUCHARITHA","Designation":"Village Volunteer","PhoneNum":7095946983},{"Office":"Budur","Name":"M ANITHA","Designation":"Village Volunteer","PhoneNum":9010205698},{"Office":"Budur","Name":"R PRATHISTA KUMAR","Designation":"Village Volunteer","PhoneNum":9381365800},{"Office":"Budur","Name":"J ERAMMA","Designation":"Village Volunteer","PhoneNum":9154545838}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>
