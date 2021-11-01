@@ -36,8 +36,8 @@ app.get("/", function (req, res) {
 });
 
 // Showing secret page
-app.get("/secret", isLoggedIn, function (req, res) {
-  res.render("secret");
+app.get("/landing", isLoggedIn, function (req, res) {
+  res.render("landing");
 });
 
 // Showing register form
@@ -58,7 +58,7 @@ app.post("/register", function (req, res) {
 
       passport.authenticate("local")(
         req, res, function () {
-          res.render("secret");
+          res.render("landing");
         });
     });
 });
@@ -70,7 +70,7 @@ app.get("/login", function (req, res) {
 
 //Handling user login
 app.post("/login", passport.authenticate("local", {
-  successRedirect: "/secret",
+  successRedirect: "/landing",
   failureRedirect: "/login"
 }), function (req, res) {
 });
