@@ -6,6 +6,7 @@ var express = require("express"),
   passportLocalMongoose =
     require("passport-local-mongoose"),
   User = require("./models/user");
+  debugger
 
 mongoose.connect("mongodb://localhost/auth_demo_app").then(() => { console.log('Connected') });
 
@@ -27,23 +28,53 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //=====================
-// ROUTES
+// ROUTES -- START
 //=====================
 
 // Showing home page
 app.get("/", function (req, res) {
-  res.render("home");
-});
-
-// Showing secret page
-app.get("/landing", isLoggedIn, function (req, res) {
-  res.render("landing");
+  res.render("login");
 });
 
 // Showing register form
 app.get("/register", function (req, res) {
   res.render("register");
 });
+
+// Showing secret page
+app.get("/index", isLoggedIn, function (req, res) {
+  res.render("phone/index");
+});
+
+app.get("/apmstaff_index", isLoggedIn, function (req, res) {
+  res.render("phone/apmstaff_index");
+});
+
+app.get("/apostaff_indexpage", isLoggedIn, function (req, res) {
+  res.render("phone/apostaff_indexpage");
+});
+
+app.get("/wip", isLoggedIn, function (req, res) {
+  res.render("phone/wip");
+});
+
+app.get("/GramaSachivalayam", isLoggedIn, function (req, res) {
+  res.render("phone/GramaSachivalayam");
+});
+
+app.get("/mpdostaff_index", isLoggedIn, function (req, res) {
+  res.render("phone/mpdostaff_index");
+});
+
+app.get("/mrostaff_index", isLoggedIn, function (req, res) {
+  res.render("phone/mrostaff_index");
+});
+
+
+
+//=====================
+// ROUTES -- END
+//=====================
 
 // Handling user signup
 app.post("/register", function (req, res) {
@@ -68,12 +99,20 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
-//Handling user login
+// Handling user login
+// app.post("/login", passport.authenticate("local", {
+//   successRedirect: "/landing",
+//   failureRedirect: "/login"
+// }), function (req, res) {
+// });
+
 app.post("/login", passport.authenticate("local", {
-  successRedirect: "/landing",
+  successRedirect: "/index",
   failureRedirect: "/login"
 }), function (req, res) {
 });
+
+
 
 //Handling user logout
 app.get("/logout", function (req, res) {
@@ -88,5 +127,7 @@ function isLoggedIn(req, res, next) {
 
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
+  console.log("Test-1")
   console.log("Server Has Started!");
+  
 });
