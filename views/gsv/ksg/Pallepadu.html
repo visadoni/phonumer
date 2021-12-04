@@ -1,0 +1,114 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal GramaSahvalyam</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Pallepadu","Name":"Mahesh bompalli","Designation":"WEA","PhoneNum":9030416832},{"Office":"Pallepadu","Name":" D Padmavati","Designation":"GMSK","PhoneNum":9059763661},{"Office":"Pallepadu","Name":"M Ravindra","Designation":"VAA","PhoneNum":6304599844},{"Office":"Pallepadu","Name":"N Vineeth Kumar","Designation":"ENA","PhoneNum":8309653278},{"Office":"Pallepadu","Name":"D Sukanya","Designation":"VSA","PhoneNum":8639534238},{"Office":"Pallepadu","Name":"E Ashok Kumar","Designation":"JLM","PhoneNum":9640415787},{"Office":"Pallepadu","Name":"D Somappa","Designation":"PS","PhoneNum":9985873085},{"Office":"Pallepadu","Name":"H Yesudas","Designation":"VRO","PhoneNum":7780195634},{"Office":"Pallepadu","Name":"B Mamatha","Designation":"DA","PhoneNum":7661898010},{"Office":"Pallepadu","Name":"SULUVAI LAKSHMANNA","Designation":"volunteer","PhoneNum":9182914206},{"Office":"Pallepadu","Name":"GOULLE SRINIVAS","Designation":"volunteer","PhoneNum":7569074253},{"Office":"Pallepadu","Name":"DEVARINTI RAGHAVA REDDY","Designation":"volunteer","PhoneNum":7702051872},{"Office":"Pallepadu","Name":"KULLOORU LAKSHMANNA","Designation":"volunteer","PhoneNum":7676322971},{"Office":"Pallepadu","Name":"TUPPADA BUJJI","Designation":"volunteer","PhoneNum":9676424672},{"Office":"Pallepadu","Name":"GOUDLA KRISHNAVENI","Designation":"volunteer","PhoneNum":8247838401},{"Office":"Pallepadu","Name":"EDIGA NAGENDRA","Designation":"volunteer","PhoneNum":6301953283},{"Office":"Pallepadu","Name":"SHAIK IRSHAD","Designation":"volunteer","PhoneNum":6305913645}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

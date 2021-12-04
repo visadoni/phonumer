@@ -1,0 +1,112 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-brown" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal MRO Office</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Kosigi Mandal","Name":"Sri J. Rudhra Goud","Designation":"Deputy Tahsildar","PhoneNum":8333988996.0},{"Office":"Kosigi Mandal","Name":"Sri N.M.Basavarajaiah","Designation":"Mandal Surveyor","PhoneNum":7013402325.0},{"Office":"Kosigi Mandal","Name":"T.Mukundarao","Designation":"MRI-2 & Senior Assistant","PhoneNum":9390990308.0},{"Office":"Agasanuru","Name":"Matta Manoj Babu","Designation":"V.R.O (Grade-II)","PhoneNum":8498985332.0},{"Office":"Arlabanda","Name":"T.Hanumanthu\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":9908481646.0},{"Office":"Bompalli","Name":"T.Ramanjineyulu","Designation":"V.R.O (Grade-I)","PhoneNum":7981159977.0},{"Office":"Chirtanakallu (I\/c)","Name":null,"Designation":null,"PhoneNum":null},{"Office":"Chintakunta","Name":"K.Veera Sainath","Designation":"V.R.O (Grade-II)","PhoneNum":8639947495.0},{"Office":"D Belagal","Name":"B.Basava raju\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":8179038219.0},{"Office":"Duddi","Name":"M.Thikka Swamy\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":7658933650.0},{"Office":"Jampapuram","Name":"Kalangeri Yugandhar Sai","Designation":"V.R.O (Grade-II)","PhoneNum":7075369553.0},{"Office":"Jumaldinne","Name":"U.Mahendra Babu","Designation":"V.R.O (Grade-II)","PhoneNum":9000545249.0},{"Office":"Kandukuru","Name":"D.Srinivasulu\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":9885981970.0},{"Office":"Kosigi 1","Name":"K. Linganna","Designation":"V.R.O (Grade-II)","PhoneNum":9182168200.0},{"Office":"Kosigi 2","Name":"Kommu Bala Narsimhudu","Designation":"V.R.O (Grade-II)","PhoneNum":9491917363.0},{"Office":"Kosigi 3","Name":"T. Veeresh","Designation":"V.R.O (Grade-II)","PhoneNum":7989302798.0},{"Office":"Kosigi 4","Name":"Thuppada Mayuri","Designation":"V.R.O (Grade-II)","PhoneNum":8297191619.0},{"Office":"Kosigi 5","Name":"Sandhyapogu PremRaj","Designation":"V.R.O (Grade-II)","PhoneNum":8897550038.0},{"Office":"Palliapadu","Name":"H.Yesu Das","Designation":"V.R.O (Grade-I)","PhoneNum":7702835800.0},{"Office":"Vandagallu (I\/c)","Name":null,"Designation":null,"PhoneNum":null},{"Office":"Sajjalaguddam","Name":"G.Marenna\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":9440975409.0},{"Office":"Sathanuru","Name":"K.Balaswamy\u00a0","Designation":"V.R.O (Grade-I)","PhoneNum":9603325437.0}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+  
+    document.title = document.getElementById('head-text').innerText
+    </script>
+
+  </body>
+
+  </html>

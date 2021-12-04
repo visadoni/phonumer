@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Doddimekala","Name":"M ASEEN","Designation":"engg assistant","PhoneNum":9912865737},{"Office":"Doddimekala","Name":"G.lavanya kumari","Designation":"mahila police","PhoneNum":8185900924},{"Office":"Doddimekala","Name":"G.  yellamma","Designation":"ANM","PhoneNum":9704711600},{"Office":"Doddimekala","Name":"E NARENDRA GOUD","Designation":"Panchayathi Secretary","PhoneNum":8374384828},{"Office":"Doddimekala","Name":"K SURENDRA BABU","Designation":"Digital Assistant","PhoneNum":9618874195},{"Office":"Doddimekala","Name":"K MAHABOOB BHASA","Designation":"WELFARE","PhoneNum":8179140477},{"Office":"Doddimekala","Name":"D MAHAMMAD RAFI","Designation":"REVENUE","PhoneNum":9741362218},{"Office":"Doddimekala","Name":"D AFRIN","Designation":"AGRICULTURE","PhoneNum":9959945540},{"Office":"Doddimekala","Name":"C ALLAPPA","Designation":"REVENUE","PhoneNum":9703895910},{"Office":"Doddimekala","Name":"Vijayalakshmi","Designation":"volunteer","PhoneNum":9052008925},{"Office":"Doddimekala","Name":" pushpavathi","Designation":"volunteer","PhoneNum":9912183074},{"Office":"Doddimekala","Name":"sunitha","Designation":"volunteer","PhoneNum":9704160883},{"Office":"Doddimekala","Name":" jhasi rani","Designation":"volunteer","PhoneNum":9949766992},{"Office":"Doddimekala","Name":" vijay kumar","Designation":"volunteer","PhoneNum":995987088},{"Office":"Doddimekala","Name":"BANAVASI VENKATESWARAMMA","Designation":"VOLUNTEER","PhoneNum":9704733862},{"Office":"Doddimekala","Name":"EDIGA RAJU","Designation":"VOLUNTEER","PhoneNum":8142767021},{"Office":"Doddimekala","Name":"K MALLESH","Designation":"VOLUNTEER","PhoneNum":9603342273},{"Office":"Doddimekala","Name":"BESTHA VENKATESWARAMMA","Designation":"VOLUNTEER","PhoneNum":9908315382},{"Office":"Doddimekala","Name":"MB NAGARAJU","Designation":"VOLUNTEER","PhoneNum":7893489291},{"Office":"Doddimekala","Name":"K HAMPESH","Designation":"VOLUNTEER","PhoneNum":6303881625},{"Office":"Doddimekala","Name":"K NAGARAJU","Designation":"VOLUNTEER","PhoneNum":9963424831},{"Office":"Doddimekala","Name":"BK YELLAMMA ","Designation":"VOLUNTEER","PhoneNum":7032482167},{"Office":"Doddimekala","Name":"K LAKSHMI DEVI","Designation":"VOLUNTEER","PhoneNum":9676184663},{"Office":"Doddimekala","Name":"U SAROJAMMA","Designation":"VOLUNTEER","PhoneNum":7901152267},{"Office":"Doddimekala","Name":"Y JYOTHI","Designation":"VOLUNTEER","PhoneNum":9963361372},{"Office":"Doddimekala","Name":"K PURUSHOTTAM","Designation":"VOLUNTEER","PhoneNum":9642504681}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

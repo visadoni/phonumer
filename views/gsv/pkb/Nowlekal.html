@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Nowlekal ","Name":"yannam thualsi","Designation":"DIGITAL ASSISTANT","PhoneNum":7981118714.0},{"Office":"Nowlekal ","Name":"EDIGA MYTHRI","Designation":"ENGINEERING ASSISTANT","PhoneNum":9533533203.0},{"Office":"Nowlekal ","Name":"G RENUKA","Designation":"VRO","PhoneNum":8500964794.0},{"Office":"Nowlekal ","Name":"N BALACHANDRUDU","Designation":"WEA","PhoneNum":9985792524.0},{"Office":"Nowlekal ","Name":"M ANJINAIAH","Designation":"LINE MEN","PhoneNum":9000860885.0},{"Office":"Nowlekal ","Name":"B K RAMANJINEYULU","Designation":"SURVEY ASSISTANT","PhoneNum":9182356905.0},{"Office":"Nowlekal ","Name":null,"Designation":null,"PhoneNum":null},{"Office":"Nowlekal ","Name":"EDIGA SHEKAR","Designation":"VOLUNTEER","PhoneNum":7893562139.0},{"Office":"Nowlekal ","Name":"C ERANNA","Designation":"VOLUNTEER","PhoneNum":6281066233.0},{"Office":"Nowlekal ","Name":"K ERANNA","Designation":"VOLUNTEER","PhoneNum":9704379695.0},{"Office":"Nowlekal ","Name":"K LINGANNA","Designation":"VOLUNTEER","PhoneNum":8179846995.0},{"Office":"Nowlekal ","Name":"BHEEMA LINGAMMA","Designation":"VOLUNTEER","PhoneNum":7093538653.0},{"Office":"Nowlekal ","Name":"SABEERA BEE","Designation":"VOLUNTEER","PhoneNum":9154550108.0},{"Office":"Nowlekal ","Name":"ERAMMA","Designation":"VOLUNTEER","PhoneNum":6309325879.0},{"Office":"Nowlekal ","Name":"RUKMINI","Designation":"VOLUNTEER","PhoneNum":8074426995.0},{"Office":"Nowlekal ","Name":"MAMATHA","Designation":"VOLUNTEER","PhoneNum":9959465746.0},{"Office":"Nowlekal ","Name":"HUSSAIN BASHA","Designation":"VOLUNTEER","PhoneNum":6281231148.0},{"Office":"Nowlekal ","Name":"SRAVANI","Designation":"VOLUNTEER","PhoneNum":9391130676.0}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

@@ -1,0 +1,115 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Mantralyam Mandal APMO </span>
+          <button class="btn" onclick="location.href='https://pardhutest16359.co.in/index.html'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select APMO Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Nadichagi","Name":"T.Shoba","Designation":"ANM","PhoneNum":6300577187},{"Office":"Nadichagi","Name":"Shiva Naik","Designation":"W E A","PhoneNum":9182825052},{"Office":"Nadichagi","Name":"SREEDEVI","Designation":"VAS","PhoneNum":9573666562},{"Office":"Nadichagi","Name":"J.Anitha","Designation":"Village Volunteer","PhoneNum":7702143659},{"Office":"Nadichagi","Name":"M.usen Bi","Designation":"Village Volunteer","PhoneNum":9553019206},{"Office":"Nadichagi","Name":"T.Swathi","Designation":"Village Volunteer","PhoneNum":9542527236},{"Office":"Nadichagi","Name":"K.Kavya","Designation":"Village Volunteer","PhoneNum":9666677017},{"Office":"Nadichagi","Name":"k.Senha ","Designation":"Village Volunteer","PhoneNum":9449312601},{"Office":"Nadichagi","Name":"K.Sikindhar","Designation":"Village Volunteer","PhoneNum":8497941094},{"Office":"Nadichagi","Name":"D.Ram Gopal","Designation":"Village Volunteer","PhoneNum":9912932091},{"Office":"Nadichagi","Name":"Sharana Basava","Designation":"Village Volunteer","PhoneNum":9182808496},{"Office":"Nadichagi","Name":"Premalatha","Designation":"Village Volunteer","PhoneNum":9640130726},{"Office":"Nadichagi","Name":"K.Ranganna Goud","Designation":"Village Volunteer","PhoneNum":9666108580},{"Office":"Nadichagi","Name":"Kusuma","Designation":"Village Volunteer","PhoneNum":9948703354},{"Office":"Nadichagi","Name":"G Linganna Goud","Designation":"Village Volunteer","PhoneNum":9951009055},{"Office":"Nadichagi","Name":"Parvathamma","Designation":"Village Volunteer","PhoneNum":8179402027},{"Office":"Nadichagi","Name":"Renuka","Designation":"Village Volunteer","PhoneNum":9010087139},{"Office":"Nadichagi","Name":"Veerupaiah Swamy","Designation":"Village Volunteer","PhoneNum":7661850080},{"Office":"Nadichagi","Name":"Prudvi Raj","Designation":"Village Volunteer","PhoneNum":9515920337},{"Office":"Nadichagi","Name":"Divan Sab","Designation":"Village Volunteer","PhoneNum":7899099888}];
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

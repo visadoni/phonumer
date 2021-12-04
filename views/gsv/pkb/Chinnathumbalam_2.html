@@ -1,0 +1,91 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+    
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      </script>
+      <style>
+    *{
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+    font-style:bold;
+    font-size:25px;
+    }
+      </style>
+    </head>
+
+  <body style="text-align:center;" id="body">
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+      let list = [{"Office":"Chinnatumbalam-2","Name":"K Venkatesh","Designation":"Ps grade 5","PhoneNum":8074048957},{"Office":"Chinnatumbalam-2","Name":"B Chandana priyanka","Designation":"Ps grade 6","PhoneNum":8639387190},{"Office":"Chinnatumbalam-2","Name":"D Asha Deepthi","Designation":"engineering assistant","PhoneNum":8985549014},{"Office":"Chinnatumbalam-2","Name":"Y Surekha","Designation":"welfare","PhoneNum":9640699949},{"Office":"Chinnatumbalam-2","Name":"Naseema Banu","Designation":"ANM","PhoneNum":9381853378},{"Office":"Chinnatumbalam-2","Name":"Sunil","Designation":"volunteers","PhoneNum":8247870553},{"Office":"Chinnatumbalam-2","Name":"Eramma","Designation":"volunteers","PhoneNum":7816088083},{"Office":"Chinnatumbalam-2","Name":"v usha","Designation":"volunteers","PhoneNum":9542354521},{"Office":"Chinnatumbalam-2","Name":"Bhu laskhmi","Designation":"volunteers","PhoneNum":9676110778},{"Office":"Chinnatumbalam-2","Name":"Brahmaiah","Designation":"volunteers","PhoneNum":9642828806},{"Office":"Chinnatumbalam-2","Name":"Savitri","Designation":"volunteers","PhoneNum":9701104943},{"Office":"Chinnatumbalam-2","Name":"Anijneyulu","Designation":"volunteer","PhoneNum":9515113332},{"Office":"Chinnatumbalam-2","Name":"urukudha","Designation":"volunteer","PhoneNum":8297364550}];
+
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+
+    document.title = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+
+    </script>
+
+  </body>
+
+  </html>

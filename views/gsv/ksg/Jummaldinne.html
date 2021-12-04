@@ -1,0 +1,114 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal GramaSahvalyam</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Jummaldinne","Name":"SULUVAI ERANNA","Designation":"PS ","PhoneNum":8897103936},{"Office":"Jummaldinne","Name":"AVITI JAYAPAL REDDY","Designation":"WEA","PhoneNum":9492488105},{"Office":"Jummaldinne","Name":"NALLAGONDA MEENAKSHI","Designation":"GMSK","PhoneNum":9391051443},{"Office":"Jummaldinne","Name":"UDDATLA MAHENDRA BABU","Designation":"VRO","PhoneNum":9000545249},{"Office":"Jummaldinne","Name":"TALARI UMADEVI","Designation":"EA","PhoneNum":8886145399},{"Office":"Jummaldinne","Name":"PINJARI DASTAGIRAMMA","Designation":"ANM","PhoneNum":9492459495},{"Office":"Jummaldinne","Name":"KALYANAM NARASIMHULU","Designation":"VS","PhoneNum":9959384778},{"Office":"Jummaldinne","Name":"CHERUKU RAJENDRA PRASAD","Designation":"VAA","PhoneNum":8897700983},{"Office":"Jummaldinne","Name":"K MADANA GOPAL","Designation":"DA","PhoneNum":9177974706},{"Office":"Jummaldinne","Name":"P HAJIMALANG","Designation":"JLM","PhoneNum":"99497 79265"},{"Office":"Jummaldinne","Name":"BANDI PRASAD","Designation":"volunteer","PhoneNum":8185991528},{"Office":"Jummaldinne","Name":"EDIGA NAGESH","Designation":"volunteer","PhoneNum":7075438501},{"Office":"Jummaldinne","Name":"HARIJANA SUNEEL","Designation":"volunteer","PhoneNum":9912679128},{"Office":"Jummaldinne","Name":"KURUVA CHANDRA SEKHAR","Designation":"volunteer","PhoneNum":6281500283},{"Office":"Jummaldinne","Name":"HARIJANA MASTHAN","Designation":"volunteer","PhoneNum":9542217415},{"Office":"Jummaldinne","Name":"KINDINTI KRISHNAMURTHY","Designation":"volunteer","PhoneNum":9652742298},{"Office":"Jummaldinne","Name":"DODDI RAJASEKHAR","Designation":"volunteer","PhoneNum":9705936627},{"Office":"Jummaldinne","Name":"DODDI ERANNA","Designation":"volunteer","PhoneNum":8790695086},{"Office":"Jummaldinne","Name":"HARIJANA LAKSHMANNA","Designation":"volunteer","PhoneNum":7674084396}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

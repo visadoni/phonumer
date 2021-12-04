@@ -1,0 +1,114 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal GramaSahvalyam</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Jampapuram","Name":"V Srinivasulu","Designation":"WEA","PhoneNum":9133013278},{"Office":"Jampapuram","Name":"S Lakshmi bai","Designation":"GMSK","PhoneNum":9381308635},{"Office":"Jampapuram","Name":"B Radha","Designation":"ANM","PhoneNum":6301691469},{"Office":"Jampapuram","Name":"P Swapna","Designation":"EA","PhoneNum":8688570775},{"Office":"Jampapuram","Name":"Y Gayatri","Designation":"VSA","PhoneNum":9182345781},{"Office":"Jampapuram","Name":"N Srinivasulu","Designation":"JLM","PhoneNum":8074793166},{"Office":"Jampapuram","Name":"N Parusharamudu","Designation":"PS (grade 4)","PhoneNum":7702803383},{"Office":"Jampapuram","Name":"K Yugandhar sai","Designation":"VRO","PhoneNum":7075369553},{"Office":"Jampapuram","Name":"E Mary kazia","Designation":"VAA","PhoneNum":7036467076},{"Office":"Jampapuram","Name":"N Bhargavi","Designation":"Veterinary assistant(AHA)","PhoneNum":9100523124},{"Office":"Jampapuram","Name":"S Shashavali","Designation":"DA","PhoneNum":9705184997},{"Office":"Jampapuram","Name":"M Pradeep kumar","Designation":"PS (grade 5)","PhoneNum":9542373015},{"Office":"Jampapuram","Name":"THALARI BHEEMESH","Designation":"volunteer","PhoneNum":7569464731},{"Office":"Jampapuram","Name":"SANDE SHANTHAMURTHY","Designation":"volunteer","PhoneNum":9985977580},{"Office":"Jampapuram","Name":"RYAVALLY AKASH REDDI","Designation":"volunteer","PhoneNum":8639497511},{"Office":"Jampapuram","Name":"THALARI ERANNA","Designation":"volunteer","PhoneNum":8978012251},{"Office":"Jampapuram","Name":"KURUVA VIJAYALAKSHMI","Designation":"volunteer","PhoneNum":9010197069},{"Office":"Jampapuram","Name":"ARE SHREEDEVI","Designation":"volunteer","PhoneNum":6303310083},{"Office":"Jampapuram","Name":"SANGAVOLLA NARASIMHULU","Designation":"volunteer","PhoneNum":7569958308},{"Office":"Jampapuram","Name":"JAMPAPURAM SHYRABI","Designation":"volunteer","PhoneNum":9000462522},{"Office":"Jampapuram","Name":"SANGATI MANJULAVANI","Designation":"volunteer","PhoneNum":6309743004},{"Office":"Jampapuram","Name":"MANYAM SIVASANKAR","Designation":"volunteer","PhoneNum":9440981182},{"Office":"Jampapuram","Name":"GUDDAIAHGARI BASAPPA","Designation":"volunteer","PhoneNum":8985129036},{"Office":"Jampapuram","Name":"KURNI ERANNA","Designation":"volunteer","PhoneNum":9666962086},{"Office":"Jampapuram","Name":"ABBILLI BASAVARAJU","Designation":"volunteer","PhoneNum":8500019174},{"Office":"Jampapuram","Name":"KORIVI CHANDRAIAH","Designation":"volunteer","PhoneNum":9542751358},{"Office":"Jampapuram","Name":"KAPU TIRUMALA REDDY","Designation":"volunteer","PhoneNum":7702200314},{"Office":"Jampapuram","Name":"GOULLA SHANKAR REDDY","Designation":"volunteer","PhoneNum":9701223830},{"Office":"Jampapuram","Name":"BANDARI PRADEEP","Designation":"volunteer","PhoneNum":9703318018},{"Office":"Jampapuram","Name":"MALLAREDDYGARI BHARATHI","Designation":"volunteer","PhoneNum":9948704086},{"Office":"Jampapuram","Name":"JAMPAPURAM NABIRASOOL","Designation":"volunteer","PhoneNum":7661869241}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

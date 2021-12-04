@@ -1,0 +1,114 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal GramaSahvalyam</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"KOSIGI-3","Name":"sheela prasanna","Designation":"PS-GRADE5","PhoneNum":7674994922},{"Office":"KOSIGI-3","Name":"C. Nirmala","Designation":"EA","PhoneNum":9951931231},{"Office":"KOSIGI-3","Name":"T. veeresh ","Designation":"vro ","PhoneNum":9705257699},{"Office":"KOSIGI-3","Name":"s. hussaina bee","Designation":"DA","PhoneNum":7013094537},{"Office":"KOSIGI-3","Name":"y. Rangamma","Designation":"VAA","PhoneNum":9542431221},{"Office":"KOSIGI-3","Name":"A. chandrakalavathi","Designation":"WEA","PhoneNum":9154537112},{"Office":"KOSIGI-3","Name":"M. Bagyalakshmi","Designation":"MP","PhoneNum":7981945241},{"Office":"KOSIGI-3","Name":"S. Pratahap","Designation":"VS","PhoneNum":9603237772},{"Office":"KOSIGI-3","Name":"ILLURI ASWINI","Designation":"volunteer","PhoneNum":9666689537},{"Office":"KOSIGI-3","Name":"MAMANI MALLIKARJUNA","Designation":"volunteer","PhoneNum":9505288301},{"Office":"KOSIGI-3","Name":"PINJARI MAHAMMAD YOUNIS","Designation":"volunteer","PhoneNum":7036188997},{"Office":"KOSIGI-3","Name":"JILAKARA INDIRA","Designation":"volunteer","PhoneNum":9347505290},{"Office":"KOSIGI-3","Name":"MUDDAMMAGARI KOSIGAIAH","Designation":"volunteer","PhoneNum":9985283724},{"Office":"KOSIGI-3","Name":"CHANDRA KALA","Designation":"volunteer","PhoneNum":9581030726},{"Office":"KOSIGI-3","Name":"PULUSU GOPALA KRISHNA","Designation":"volunteer","PhoneNum":9885692856},{"Office":"KOSIGI-3","Name":"PULUSU GOPAL","Designation":"volunteer","PhoneNum":9676929093},{"Office":"KOSIGI-3","Name":"MUDDAMMA GARI ERANNA","Designation":"volunteer","PhoneNum":8886255040},{"Office":"KOSIGI-3","Name":"MADESH P","Designation":"volunteer","PhoneNum":9642176516},{"Office":"KOSIGI-3","Name":"GALEMMAGARI VENKATESH","Designation":"volunteer","PhoneNum":7032946074},{"Office":"KOSIGI-3","Name":"KATIKA THANVEER BASHA","Designation":"volunteer","PhoneNum":9885906463},{"Office":"KOSIGI-3","Name":"PEDDABAVI YASHODA","Designation":"volunteer","PhoneNum":9573795785},{"Office":"KOSIGI-3","Name":"K BUSHRA BANU","Designation":"volunteer","PhoneNum":8121631427},{"Office":"KOSIGI-3","Name":"KATIKA MAINUDDIN KATIKA","Designation":"volunteer","PhoneNum":9642788699},{"Office":"KOSIGI-3","Name":"KATIKA SHABEER","Designation":"volunteer","PhoneNum":9885922908},{"Office":"KOSIGI-3","Name":"KATIKA ANWARBASHA","Designation":"volunteer","PhoneNum":9966332956},{"Office":"KOSIGI-3","Name":"NADIGENI MAHESH","Designation":"volunteer","PhoneNum":8555856410}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

@@ -1,0 +1,112 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-blue-grey" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal MPDO Office</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"MPDO OFFICE","Name":"M.MALLESWARI ","Designation":"Mandal Development Officer","PhoneNum":9704234606},{"Office":"MPDO OFFICE","Name":"Ramadevi Golla","Designation":"Administrative Officer","PhoneNum":8500139259},{"Office":"MPDO OFFICE","Name":"Suryanarasimha Reddy Raju","Designation":"Extension Officer (PR and RD) (for","PhoneNum":9010406487},{"Office":"MPDO OFFICE","Name":"Nagarajachar Rayadurgam","Designation":"Junior Assistant","PhoneNum":7989993698},{"Office":"MPDO OFFICE","Name":"Hanumesha Jeeru","Designation":"Senior Assistant","PhoneNum":9908882008},{"Office":"MPDO OFFICE","Name":"Satyanna Jogi","Designation":"Panchayat Secretary","PhoneNum":9908240969},{"Office":"MPDO OFFICE","Name":"Farjana Khalef","Designation":"OFFICE SUBORDINATE","PhoneNum":9505642331},{"Office":"MPDO OFFICE","Name":"Chandrasekhar Duddu","Designation":"Bill Collector (from Gram Panc","PhoneNum":9000462494},{"Office":"MPDO OFFICE","Name":"Padmavathi Malapalli","Designation":"Night Watchmen","PhoneNum":9618725461},{"Office":"MPDO OFFICE","Name":"Eresh Sangati","Designation":"Sweeper","PhoneNum":6302813430},{"Office":"MPDO OFFICE","Name":"Thamas Chinna","Designation":"Sweeper","PhoneNum":8096490324},{"Office":"MPDO OFFICE","Name":"Gayatri Devi Pullala","Designation":"Bill Collector (from Gram Panchayst)","PhoneNum":9493530916},{"Office":"MPDO OFFICE","Name":"Vinod Kumar Naik G","Designation":"Panchayat Secretary","PhoneNum":9908087320},{"Office":"MPDO OFFICE","Name":"Parusharamudu Nanapuram","Designation":"Panchayat Secretary","PhoneNum":7702803383},{"Office":"MPDO OFFICE","Name":"Venkata Krishna Challa","Designation":"Panchayat Secretary","PhoneNum":8985126728},{"Office":"MPDO OFFICE","Name":"Nabi Sab Doodekula","Designation":"Panchayat Secretary","PhoneNum":9010747188},{"Office":"MPDO OFFICE","Name":"Ramaraju B S","Designation":"Panchayat Secretary","PhoneNum":9100140940},{"Office":"MPDO OFFICE","Name":"Venkatanarasamma Kummara","Designation":"Panchayat Secretary","PhoneNum":7386556329},{"Office":"MPDO OFFICE","Name":"D Somappa","Designation":"Panchayat Secretary","PhoneNum":9985873085},{"Office":"MPDO OFFICE","Name":"G Vijay Bhaskar","Designation":"Panchayat Secretary","PhoneNum":9866239719}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+  
+    document.title = document.getElementById('head-text').innerText
+    </script>
+
+  </body>
+
+  </html>

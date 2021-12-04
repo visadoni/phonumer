@@ -1,0 +1,115 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Mantralyam Mandal APMO </span>
+          <button class="btn" onclick="location.href='https://pardhutest16359.co.in/index.html'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select APMO Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"Kamavaram","Name":"E.Bharathi","Designation":"WEA","PhoneNum":8179811394},{"Office":"Kamavaram","Name":"G .Surya Prakash Reddy","Designation":"EA","PhoneNum":9553011034},{"Office":"Kamavaram","Name":"G.Vemanna","Designation":"VS","PhoneNum":7660099010},{"Office":"Kamavaram","Name":"D.Sharifa","Designation":"Village Volunteer","PhoneNum":8328172343},{"Office":"Kamavaram","Name":"S.Hussain peera","Designation":"Village Volunteer","PhoneNum":9494678630},{"Office":"Kamavaram","Name":"T.allaiah","Designation":"Village Volunteer","PhoneNum":7337581733},{"Office":"Kamavaram","Name":"Jeeru Usha","Designation":"Village Volunteer","PhoneNum":9652330585},{"Office":"Kamavaram","Name":"Y.Lalitha","Designation":"Village Volunteer","PhoneNum":8978696442},{"Office":"Kamavaram","Name":"P.pampanna","Designation":"Village Volunteer","PhoneNum":9502056922},{"Office":"Kamavaram","Name":"K.Sreedhar","Designation":"Village Volunteer","PhoneNum":9154544266},{"Office":"Kamavaram","Name":"G.Chinna Ramesh","Designation":"Village Volunteer","PhoneNum":9154544257},{"Office":"Kamavaram","Name":"E.Mahendra shetty","Designation":"Village Volunteer","PhoneNum":9502568040},{"Office":"Kamavaram","Name":"U.Sunitha","Designation":"Village Volunteer","PhoneNum":9154544269},{"Office":"Kamavaram","Name":"Poojari pooja","Designation":"Village Volunteer","PhoneNum":8985029130},{"Office":"Kamavaram","Name":"peddamukkaya","Designation":"Village Volunteer","PhoneNum":9154544249},{"Office":"Kamavaram","Name":"C.veeresh","Designation":"Village Volunteer","PhoneNum":9959728197},{"Office":"Kamavaram","Name":"V.Eramma","Designation":"Village Volunteer","PhoneNum":7993134279},{"Office":"Kamavaram","Name":"U.Narasappa","Designation":"Village Volunteer","PhoneNum":9573941551},{"Office":"Kamavaram","Name":"V.Chamundeswari","Designation":"Village Volunteer","PhoneNum":9154544261},{"Office":"Kamavaram","Name":"C.Thikkaswami","Designation":"Village Volunteer","PhoneNum":9154544280},{"Office":"Kamavaram","Name":"U.Ashok","Designation":"Village Volunteer","PhoneNum":9676113949},{"Office":"Kamavaram","Name":" y.shashikala","Designation":"Village Volunteer","PhoneNum":9154544270}];
+      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>

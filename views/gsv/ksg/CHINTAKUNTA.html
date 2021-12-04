@@ -1,0 +1,114 @@
+  <!DOCTYPE HTML>
+  <html>
+
+    <head>
+      <title>page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    
+<style>
+    *{
+font-family:'Times New Roman', Times, serif;
+font-style:bold;
+font-size:20px;
+}
+
+
+.btn {
+  background-color:white;
+  border:black;
+    border-style:groove;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+</style>
+
+  </head>
+  <body style="text-align:center;" id="body">
+  
+    <div class="w3-container w3-teal" >
+      <div class="w3-bar">
+          <span style='font-size:25px;' id='head-text' > Kosigi Mandal GramaSahvalyam</span>
+          <button class="btn" onclick="location.href='#'"><i class="fa fa-home"></i></button>
+         </div>
+      </div>
+  <div class="w3-container ">
+  
+    <p>Select Contacts from Below list</p>
+
+  <div class="w3-container">
+
+    <table id="table" class="w3-table-all">
+    <thead><tr class="w3-red"></tr>
+    </thead>
+    </table>
+  </div>
+
+    <script>
+let list = [{"Office":"CHINTAKUNTA","Name":"BELAGAL ANJINAYYA","Designation":"PANCHAYAT SECRETARY","PhoneNum":9642389864.0},{"Office":"CHINTAKUNTA","Name":"BOYA KRIAHNA","Designation":"DIGITAL ASST","PhoneNum":9701433058.0},{"Office":"CHINTAKUNTA","Name":"K VEERA SAINATH","Designation":"VILLAGE REVENUE OFFICER","PhoneNum":8639947495.0},{"Office":"CHINTAKUNTA","Name":"MALA SALAVADI VASANT KUMAR","Designation":"VILLAGE SURVEY ASST","PhoneNum":9515503500.0},{"Office":"CHINTAKUNTA","Name":"SOORUPAGU RAVI SHANKAR","Designation":"WELFARE AND EDUCATION ASST","PhoneNum":9492309840.0},{"Office":"CHINTAKUNTA","Name":"MANDALURI MADHU SUDHAN","Designation":"VILLAGE ENGINEERING ASST","PhoneNum":8639399022.0},{"Office":"CHINTAKUNTA","Name":"YERUKALA MALLESWARI","Designation":"MAHILA POLICE","PhoneNum":6305467022.0},{"Office":"CHINTAKUNTA","Name":"KURUVA HYMAVATI","Designation":"VILLAGE ANIMAL HUSBANDRY","PhoneNum":9398513521.0},{"Office":"CHINTAKUNTA","Name":"BOYA VENKATESWARULU","Designation":"JUNIOR LINE MEN","PhoneNum":9550030592.0},{"Office":"CHINTAKUNTA","Name":"NENGI ANUMANTHU","Designation":"volunteer","PhoneNum":6281947409.0},{"Office":"CHINTAKUNTA","Name":"NARASAPPAGARI ANJINAYYA","Designation":"volunteer","PhoneNum":8074275634.0},{"Office":"CHINTAKUNTA","Name":"HANUMAIAHGARI CHINNA MUNISWAMY","Designation":"volunteer","PhoneNum":9347364393.0},{"Office":"CHINTAKUNTA","Name":"RAMAIAH KALLURU","Designation":"volunteer","PhoneNum":9542547240.0},{"Office":"CHINTAKUNTA","Name":"PULUSU VEERARAJU PULUSU","Designation":"volunteer","PhoneNum":8008634964.0},{"Office":"CHINTAKUNTA","Name":"KAPPA RAMESH","Designation":"volunteer","PhoneNum":9010008081.0},{"Office":"CHINTAKUNTA","Name":"KAPPA RAMANJINEYULU KAPPA","Designation":"volunteer","PhoneNum":8328467853.0},{"Office":"CHINTAKUNTA","Name":"NARASAPPA GARI NAGESH","Designation":"volunteer","PhoneNum":9550241606.0},{"Office":"CHIRTHANKALU","Name":"Yarragudi Nagarjuna","Designation":"Survey Assistant","PhoneNum":9390829199.0},{"Office":"CHIRTHANKALU","Name":"Golla Rajasekhar","Designation":"Welfare & Educational Assistant","PhoneNum":null},{"Office":"CHIRTHANKALU","Name":"Velpula Rajeshwari","Designation":"Mahila Police & Women and child welfare Assistant","PhoneNum":9154412982.0},{"Office":"CHIRTHANKALU","Name":"BOYA RAMACHANDRUDU","Designation":"Energy Assistant","PhoneNum":9666009435.0},{"Office":"CHIRTHANKALU","Name":"PUNDARI THABITHA","Designation":"volunteer","PhoneNum":8497956034.0},{"Office":"CHIRTHANKALU","Name":"NAGALADINNE AHAMED BASHA","Designation":"volunteer","PhoneNum":8367737078.0},{"Office":"CHIRTHANKALU","Name":"BHANGI NAGARAJU","Designation":"volunteer","PhoneNum":9014443133.0},{"Office":"CHIRTHANKALU","Name":"NAGARATHNA GOULLA","Designation":"volunteer","PhoneNum":8309212420.0},{"Office":"CHIRTHANKALU","Name":"GOULLA ERAREDDY","Designation":"volunteer","PhoneNum":9014968091.0},{"Office":"CHIRTHANKALU","Name":"GATTU ANURADHA","Designation":"volunteer","PhoneNum":7981495749.0},{"Office":"CHIRTHANKALU","Name":"GOULLA VEERESH","Designation":"volunteer","PhoneNum":6303362380.0},{"Office":"CHIRTHANKALU","Name":"KONDAGERI CHINNA RAMIREDDY","Designation":"volunteer","PhoneNum":8331094087.0},{"Office":"CHIRTHANKALU","Name":"KURUVA PUJARI GARJAPPA","Designation":"volunteer","PhoneNum":9676828428.0},{"Office":"CHIRTHANKALU","Name":"THALARI RAMALINGAIAH","Designation":"volunteer","PhoneNum":7036748534.0}];      function constructTable(selector) {
+
+        // Getting the all column names
+        let cols = Headers(list, selector);
+        
+        // Traversing the JSON data
+        for (let i = 0; i < list.length; i++) {
+          let row = $('<tr/>');
+          for (let colIndex = 0; colIndex < cols.length; colIndex++) {
+            let val = list[i][cols[colIndex]];
+            debugger;
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($('<td/>').html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+      
+      function Headers(list, selector) {
+        let columns = [];
+        let header = $('<tr/>');
+
+        for (let i = 0; i < list.length; i++) {
+          let row = list[i];
+
+          for (let k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($('<th/>').html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+      $(document).ready(constructTable('#table'))
+
+    var tdEle = document.getElementsByTagName('td');
+    var indexvar = 3;
+    while(indexvar < tdEle.length ){
+      document.getElementsByTagName('td')[indexvar].innerHTML  =  "<a href = \" tel:" + document.getElementsByTagName('td')[indexvar].textContent + " \">" + document.getElementsByTagName('td')[indexvar].textContent + "</a>"
+      indexvar+=4;
+
+    }
+    var chgStr = document.getElementsByTagName('td')[0].textContent + '-Savhivalyam'
+    document.title = chgStr
+    document.getElementById('head-text').innerText = chgStr
+
+    </script>
+
+  </body>
+
+  </html>
